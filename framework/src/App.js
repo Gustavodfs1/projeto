@@ -1,13 +1,13 @@
 /* Import statements */
-import React, { Component } from "react";
-import { Link, Route, Switch } from "react-router-dom";
-import todo from "./pages/to-do/todo";
-import albuns from "./pages/albuns/albuns";
-import postagens from "./pages/postagens/postagens";
+import React from "react";
+import { Router, Link, Route, Switch } from "react-router-dom";
+import Todo from "./pages/to-do/todo";
+import Albuns from "./pages/albuns/albuns";
+import Postagens from "./pages/postagens/postagens";
 import './App.css';
+import history from './common/history';
 
-
-export default function App() {
+const App = () => {
   return (
     <div className="container">
       <nav className="navbar"> 
@@ -32,9 +32,15 @@ export default function App() {
       <a>Desenvolvido por Deborah Vilas Boas S2</a>
       </div>
 
-      <Route path="/postagens" component={postagens} />
-      <Route path="/albuns" component={albuns} />
-      <Route path="/todos" component={todo} />
+      <Router history={history}>
+        <Switch>
+          <Route path="/postagens" component={Postagens} />
+          <Route path="/albuns" component={Albuns} />
+          <Route path="/todos" component={Todo} />
+        </Switch>
+      </Router>
     </div>
   );
 }
+
+export default App;
