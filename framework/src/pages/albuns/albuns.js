@@ -1,58 +1,41 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import Tabela from "../../components/tabela"
 
-export default function albuns() {
-    const objeto =
-    {
-        titulos:[ "tit1", "tit2", "titulo3", "titulo4"],
-        linhas:[
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-            ["linha1", "linha1.2", "linha1.3", "linha1.4"],
-            ["linha2", "linha2.2", "linha2.3", "linha2.4"],
-        ]
+import { GetAlbums } from '../../common/Service';
 
+const Albums = () => {
+    const [albums, setAlbums] = useState(null);
+
+    // componentDidMount
+    useEffect(() => {
+        getAlbums();
+    }, []);
+
+    const getAlbums = async () => {
+        const albumsResponse = await GetAlbums();
+        
+        const albumsNormalized = {
+            titulos: [
+                'ID',
+                'Title',
+                'UserID'
+            ],
+            linhas: albumsResponse.map((item) => {
+                return [item.id, item.title, item.userId];
+            }),
+            // linhas: albumsResponse.map(item => [item.id, item.title, item.userId]),
+            // linhas: albumsResponse.map(({ id, title, userId }) => [id, title, userId])
+        };
+
+        setAlbums(albumsNormalized);
     }
-    
-    
 
     return (
-        <Tabela objeto = {objeto}/>
+        <>
+        <div>albums</div>
+        {albums === null ? 'Estamos carregando os dados' : <Tabela objeto={albums} />}
+        </>
     )
 }
+
+export default Albums;
