@@ -1,0 +1,59 @@
+Arguments: 
+  /usr/local/bin/node /Users/gustavofaria/.yarn/bin/yarn.js install
+
+PATH: 
+  /Users/gustavofaria/google-cloud-sdk/bin:/Users/gustavofaria/.zinit/polaris/bin:/Users/gustavofaria/.yarn/bin:/Users/gustavofaria/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/gustavofaria/.dotnet/tools
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.13.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/gustavofaria/Documents/Deborah/Beck-end/package.json: Unexpected token / in JSON at position 144
+      at JSON.parse (<anonymous>)
+      at /Users/gustavofaria/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/gustavofaria/.yarn/lib/cli.js:310:30)
+      at /Users/gustavofaria/.yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "Beck-end",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+      //"dev": "nodemon --watch "src/" --exec \"ts-node src/index.ts\" -e ts"
+  
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "ts-node": "^9.1.1",
+      "typescript": "^4.2.2"
+    },
+    "devDependencies": {
+      "@typescript-eslint/eslint-plugin": "^4.16.1",
+      "@typescript-eslint/parser": "^4.16.1",
+      "eslint": "^7.21.0",
+      "eslint-config-prettier": "^8.1.0",
+      "eslint-plugin-prettier": "^3.3.1",
+      "nodemon": "^2.0.7",
+      "prettier": "^2.2.1",
+      "sucrase": "^3.17.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
